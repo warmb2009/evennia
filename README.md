@@ -1,3 +1,4 @@
+尝试转为py3, 工作环境 python 3.6.5
 # Evennia MUD/MU\* Creation System ![evennia logo][logo]
 [![Build Status][travisimg]][travislink] [![Coverage Status][coverimg]][coverlink]
 
