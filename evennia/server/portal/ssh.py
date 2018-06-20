@@ -277,7 +277,7 @@ class SshProtocol(Manhole, session.Session):
                         Note that it must be actively turned back on again!
 
         """
-        # print "telnet.send_text", args,kwargs  # DEBUG
+        # print("telnet.send_text", args,kwargs  # DEBUG)
         text = args[0] if args else ""
         if text is None:
             return

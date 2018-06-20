@@ -442,7 +442,7 @@ def initialize_nick_templates(in_template, out_template):
     # validate the tempaltes - they should at least have the same number of args
     n_outargs = len(_RE_NICK_TEMPLATE_ARG.findall(out_template))
     if n_inargs != n_outargs:
-        print n_inargs, n_outargs
+        print(n_inargs, n_outargs)
         raise NickTemplateInvalid
 
     return re.compile(regex_string), template_string

@@ -412,5 +412,5 @@ class AjaxWebClientSession(session.Session):
 
         """
         if not cmdname == "options":
-            # print "ajax.send_default", cmdname, args, kwargs
+            # print("ajax.send_default", cmdname, args, kwargs)
             self.client.lineSend(self.csessid, [cmdname, args, kwargs])

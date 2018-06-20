@@ -84,9 +84,11 @@ class ScriptDB(TypedObject):
     db_desc = models.CharField('desc', max_length=255, blank=True)
     # A reference to the database object affected by this Script, if any.
     db_obj = models.ForeignKey("objects.ObjectDB", null=True, blank=True, verbose_name='scripted object',
-                               help_text='the object to store this script on, if not a global script.')
+                               help_text='the object to store this script on, if not a global script.',
+                               on_delete=models.CASCADE)
     db_account = models.ForeignKey("accounts.AccountDB", null=True, blank=True, verbose_name="scripted account",
-                                   help_text='the account to store this script on (should not be set if db_obj is set)')
+                                   help_text='the account to store this script on (should not be set if db_obj is set)',
+                                   on_delete=models.CASCADE)
 
     # how often to run Script (secs). -1 means there is no timer
     db_interval = models.IntegerField('interval', default=-1, help_text='how often to repeat script, in seconds. -1 means off.')

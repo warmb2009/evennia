@@ -995,7 +995,7 @@ class DefaultGuest(DefaultAccount):
         characters = self.db._playable_characters
         for character in characters:
             if character:
-                print "deleting Character:", character
+                print("deleting Character:", character)
                 character.delete()
 
     def at_post_disconnect(self, **kwargs):

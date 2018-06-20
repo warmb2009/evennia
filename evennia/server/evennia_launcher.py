@@ -502,7 +502,7 @@ def create_secret_key():
     """
     import random
     import string
-    secret_key = list((string.letters +
+    secret_key = list((string.ascii_letters +
                        string.digits + string.punctuation).replace("\\", "")
                       .replace("'", '"').replace("{", "_").replace("}", "-"))
     random.shuffle(secret_key)
@@ -537,10 +537,10 @@ def create_settings_file(init=True, secret_settings=False):
         if os.path.exists(settings_path):
             inp = input("%s already exists. Do you want to reset it? y/[N]> " % settings_path)
             if not inp.lower() == 'y':
-                print ("Aborted.")
+                print("Aborted.")
                 return
             else:
-                print ("Reset the settings file.")
+                print("Reset the settings file.")
 
         default_settings_path = os.path.join(EVENNIA_TEMPLATE, "server", "conf", "settings.py")
         shutil.copy(default_settings_path, settings_path)
@@ -601,7 +601,7 @@ def check_database():
     # Check so a database exists and is accessible
     from django.db import connection
     tables = connection.introspection.get_table_list(connection.cursor())
-    if not tables or not isinstance(tables[0], basestring):  # django 1.8+
+    if not tables or not isinstance(tables[0], str):  # django 1.8+
         tables = [tableinfo.name for tableinfo in tables]
     if tables and u'accounts_accountdb' in tables:
         # database exists and seems set up. Initialize evennia.
@@ -1167,7 +1167,7 @@ def server_operation(mode, service, interactive, profiler, logserver=False, doex
 
     elif mode == 'stop':
         if os.name == "nt":
-            print (
+            print(
                 "(Obs: You can use a single Ctrl-C to skip "
                 "Windows' annoying 'Terminate batch job (Y/N)?' prompts.)")
         # stop processes, avoiding reload
@@ -1334,7 +1334,14 @@ def main():
                     kwargs[arg.lstrip("--")] = value
                 else:
                     args.append(arg)
+        print("---")
+        print(*args)
+        print(**kwargs)
+        print("---")
+        print(type(*args))
+        print("---")
         try:
+
             django.core.management.call_command(*args, **kwargs)
         except django.core.management.base.CommandError as exc:
             args = ", ".join(args)

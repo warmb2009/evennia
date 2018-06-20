@@ -65,7 +65,7 @@ def _init_command(cls, **kwargs):
         temp.append(lockstring)
     cls.lock_storage = ";".join(temp)
 
-    if hasattr(cls, 'arg_regex') and isinstance(cls.arg_regex, basestring):
+    if hasattr(cls, 'arg_regex') and isinstance(cls.arg_regex, str):
         cls.arg_regex = re.compile(r"%s" % cls.arg_regex, re.I + re.UNICODE)
     if not hasattr(cls, "auto_help"):
         cls.auto_help = True

@@ -57,7 +57,7 @@ try:
     WEB_PLUGINS_MODULE = mod_import(settings.WEB_PLUGINS_MODULE)
 except ImportError:
     WEB_PLUGINS_MODULE = None
-    print ("WARNING: settings.WEB_PLUGINS_MODULE not found - "
+    print("WARNING: settings.WEB_PLUGINS_MODULE not found - "
            "copy 'evennia/game_template/server/conf/web_plugins.py to mygame/server/conf.")
 
 #------------------------------------------------------------
