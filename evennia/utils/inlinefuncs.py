@@ -244,7 +244,7 @@ class ParseStack(list):
         """
         The stack will merge strings, add other things as normal
         """
-        if isinstance(item, basestring):
+        if isinstance(item, str):
             if self._string_last:
                 self[-1] += item
             else:

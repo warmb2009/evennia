@@ -595,12 +595,12 @@ def dbref(inp, reqhash=True):
 
     """
     if reqhash:
-        num = (int(inp.lstrip('#')) if (isinstance(inp, basestring) and
+        num = (int(inp.lstrip('#')) if (isinstance(inp, str) and
                                         inp.startswith("#") and
                                         inp.lstrip('#').isdigit())
                else None)
         return num if num > 0 else None
-    elif isinstance(inp, basestring):
+    elif isinstance(inp, str):
         inp = inp.lstrip('#')
         return int(inp) if inp.isdigit() and int(inp) > 0 else None
     else:
@@ -723,7 +723,7 @@ def to_unicode(obj, encoding='utf-8', force_string=False):
 
     """
 
-    if force_string and not isinstance(obj, basestring):
+    if force_string and not isinstance(obj, str):
         # some sort of other object. Try to
         # convert it to a string representation.
         if hasattr(obj, '__str__'):
@@ -734,14 +734,14 @@ def to_unicode(obj, encoding='utf-8', force_string=False):
             # last resort
             obj = str(obj)
 
-    if isinstance(obj, basestring) and not isinstance(obj, unicode):
+    if isinstance(obj, str) and not isinstance(obj, str):
         try:
-            obj = unicode(obj, encoding)
+            # obj = unicode(obj, encoding)
             return obj
         except UnicodeDecodeError:
             for alt_encoding in ENCODINGS:
                 try:
-                    obj = unicode(obj, alt_encoding)
+                    # obj = unicode(obj, alt_encoding)
                     return obj
                 except UnicodeDecodeError:
                     # if we still have an error, give up
@@ -768,17 +768,17 @@ def to_str(obj, encoding='utf-8', force_string=False):
         conversion of objects to strings.
 
     """
-    if force_string and not isinstance(obj, basestring):
+    if force_string and not isinstance(obj, str):
         # some sort of other object. Try to
         # convert it to a string representation.
         try:
             obj = str(obj)
         except Exception:
-            obj = unicode(obj)
+            obj = str(obj)
 
-    if isinstance(obj, basestring) and isinstance(obj, unicode):
+    if isinstance(obj, str) and isinstance(obj, str):
         try:
-            obj = obj.encode(encoding)
+            obj = obj.encode(encoding).decode(encoding)
             return obj
         except UnicodeEncodeError:
             for alt_encoding in ENCODINGS:
@@ -872,7 +872,7 @@ def inherits_from(obj, parent):
     else:
         obj_paths = ["%s.%s" % (mod.__module__, mod.__name__) for mod in obj.__class__.mro()]
 
-    if isinstance(parent, basestring):
+    if isinstance(parent,  str):
         # a given string path, for direct matching
         parent_path = parent
     elif callable(parent):
@@ -1298,7 +1298,7 @@ def string_from_module(module, variable=None, default=None):
         if variable:
             return val
         else:
-            result = [v for v in make_iter(val) if isinstance(v, basestring)]
+            result = [v for v in make_iter(val) if isinstance(v, str)]
             return result if result else default
     return default
 
@@ -1741,7 +1741,7 @@ def m_len(target):
     """
     # Would create circular import if in module root.
     from evennia.utils.ansi import ANSI_PARSER
-    if inherits_from(target, basestring) and "|lt" in target:
+    if inherits_from(target, str) and "|lt" in target:
         return len(ANSI_PARSER.strip_mxp(target))
     return len(target)
 

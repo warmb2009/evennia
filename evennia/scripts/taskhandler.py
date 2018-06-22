@@ -42,7 +42,7 @@ class TaskHandler(object):
         """
         to_save = False
         value = ServerConfig.objects.conf("delayed_tasks", default={})
-        if isinstance(value, basestring):
+        if isinstance(value, str):
             tasks = dbunserialize(value)
         else:
             tasks = value

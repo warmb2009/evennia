@@ -302,7 +302,7 @@ class LockHandler(object):
                 error.
 
         """
-        if isinstance(lockstring, basestring):
+        if isinstance(lockstring, str):
             lockdefs = lockstring.split(";")
         else:
             lockdefs = [lockdef for locks in lockstring for lockdef in locks.split(";")]

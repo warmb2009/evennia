@@ -538,7 +538,7 @@ def _spacing_preflight(func):
     def wrapped(self, width, fillchar=None):
         if fillchar is None:
             fillchar = " "
-        if (len(fillchar) != 1) or (not isinstance(fillchar, basestring)):
+        if (len(fillchar) != 1) or (not isinstance(fillchar, str)):
             raise TypeError("must be char, not %s" % type(fillchar))
         if not isinstance(width, int):
             raise TypeError("integer argument expected, got %s" % type(width))
@@ -579,7 +579,7 @@ def _on_raw(func_name):
             # just skip out if there are no more strings
             pass
         result = getattr(self._raw_string, func_name)(*args, **kwargs)
-        if isinstance(result, basestring):
+        if isinstance(result, str):
             return ANSIString(result, decoded=True)
         return result
     return wrapped
@@ -633,7 +633,7 @@ class ANSIMeta(type):
         super(ANSIMeta, cls).__init__(*args, **kwargs)
 
 
-class ANSIString(with_metaclass(ANSIMeta, unicode)):
+class ANSIString(with_metaclass(ANSIMeta, str)):
     """
     Unicode-like object that is aware of ANSI codes.
 
@@ -674,7 +674,7 @@ class ANSIString(with_metaclass(ANSIMeta, unicode)):
 
         """
         string = args[0]
-        if not isinstance(string, basestring):
+        if not isinstance(string, str):
             string = to_str(string, force_string=True)
         parser = kwargs.get('parser', ANSI_PARSER)
         decoded = kwargs.get('decoded', False) or hasattr(string, '_raw_string')
@@ -803,7 +803,7 @@ class ANSIString(with_metaclass(ANSIMeta, unicode)):
         interpreted literally.
 
         """
-        if not isinstance(other, basestring):
+        if not isinstance(other, str):
             return NotImplemented
         if not isinstance(other, ANSIString):
             other = ANSIString(other)
@@ -814,7 +814,7 @@ class ANSIString(with_metaclass(ANSIMeta, unicode)):
         Likewise, if we're on the other end.
 
         """
-        if not isinstance(other, basestring):
+        if not isinstance(other, str):
             return NotImplemented
         if not isinstance(other, ANSIString):
             other = ANSIString(other)

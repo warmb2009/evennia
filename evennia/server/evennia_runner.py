@@ -19,8 +19,8 @@ import os
 import sys
 from argparse import ArgumentParser
 from subprocess import Popen
-import Queue
-import thread
+import queue as Queue
+import _thread as thread
 import evennia
 
 try:

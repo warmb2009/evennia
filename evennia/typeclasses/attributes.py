@@ -222,11 +222,13 @@ class AttributeHandler(object):
         query = {"%s__id" % self._model: self._objid,
                  "attribute__db_model__iexact": self._model,
                  "attribute__db_attrtype": self._attrtype}
+        print(self._model)
         attrs = [
             conn.attribute for conn in getattr(
                 self.obj,
-                self._m2m_fieldname).through.objects.filter(
-                **query)]
+                self._m2m_fieldname
+            ).through.objects.filter(**query)
+        ]
         self._cache = dict(("%s-%s" % (to_str(attr.db_key).lower(),
                                        attr.db_category.lower() if attr.db_category else None),
                             attr) for attr in attrs)

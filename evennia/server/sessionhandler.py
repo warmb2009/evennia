@@ -195,7 +195,7 @@ class SessionHandler(dict):
                 return newdict
             elif hasattr(data, "__iter__"):
                 return [_validate(part) for part in data]
-            elif isinstance(data, basestring):
+            elif isinstance(data, str):
                 # make sure strings are in a valid encoding
                 try:
                     data = data and to_str(to_unicode(data), encoding=session.protocol_flags["ENCODING"])

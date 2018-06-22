@@ -286,7 +286,7 @@ def _map_to_list(game_map):
 
     """
     list_map = game_map.split('\n')
-    return [character.decode('UTF-8') if isinstance(character, basestring)
+    return [character.decode('UTF-8') if isinstance(character, str)
             else character for character in list_map]
 
 

@@ -185,7 +185,7 @@ def client_options(session, *args, **kwargs):
         return {0: int(val)}
 
     def validate_bool(val):
-        if isinstance(val, basestring):
+        if isinstance(val, str):
             return True if val.lower() in ("true", "on", "1") else False
         return bool(val)
 

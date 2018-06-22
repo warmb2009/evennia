@@ -22,7 +22,8 @@ import os
 import time
 from collections import defaultdict, namedtuple
 from itertools import count
-from cStringIO import StringIO
+from io import StringIO
+# from cStringIO import StringIO
 try:
     import cPickle as pickle
 except ImportError:
@@ -256,8 +257,8 @@ class MsgPortal2Server(amp.Command):
 
     """
     key = "MsgPortal2Server"
-    arguments = [('packed_data', Compressed())]
-    errors = {Exception: 'EXCEPTION'}
+    arguments = [(b'packed_data', Compressed())]
+    errors = {Exception: b'EXCEPTION'}
     response = []
 
 
@@ -267,8 +268,8 @@ class MsgServer2Portal(amp.Command):
 
     """
     key = "MsgServer2Portal"
-    arguments = [('packed_data', Compressed())]
-    errors = {Exception: 'EXCEPTION'}
+    arguments = [(b'packed_data', Compressed())]
+    errors = {Exception: b'EXCEPTION'}
     response = []
 
 
@@ -281,8 +282,8 @@ class AdminPortal2Server(amp.Command):
 
     """
     key = "AdminPortal2Server"
-    arguments = [('packed_data', Compressed())]
-    errors = {Exception: 'EXCEPTION'}
+    arguments = [(b'packed_data', Compressed())]
+    errors = {Exception: b'EXCEPTION'}
     response = []
 
 
@@ -295,8 +296,8 @@ class AdminServer2Portal(amp.Command):
 
     """
     key = "AdminServer2Portal"
-    arguments = [('packed_data', Compressed())]
-    errors = {Exception: 'EXCEPTION'}
+    arguments = [(b'packed_data', Compressed())]
+    errors = {Exception: b'EXCEPTION'}
     response = []
 
 
@@ -309,12 +310,12 @@ class FunctionCall(amp.Command):
 
     """
     key = "FunctionCall"
-    arguments = [('module', amp.String()),
-                 ('function', amp.String()),
-                 ('args', amp.String()),
-                 ('kwargs', amp.String())]
-    errors = {Exception: 'EXCEPTION'}
-    response = [('result', amp.String())]
+    arguments = [(b'module', amp.String()),
+                 (b'function', amp.String()),
+                 (b'args', amp.String()),
+                 (b'kwargs', amp.String())]
+    errors = {Exception: b'EXCEPTION'}
+    response = [(b'result', amp.String())]
 
 
 # Helper functions for pickling.

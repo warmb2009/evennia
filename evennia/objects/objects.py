@@ -367,7 +367,7 @@ class DefaultObject(with_metaclass(TypeclassBase, ObjectDB)):
             messaging is assumed to be handled by the caller.
 
         """
-        is_string = isinstance(searchdata, basestring)
+        is_string = isinstance(searchdata, str)
 
 
         if is_string:
@@ -444,7 +444,7 @@ class DefaultObject(with_metaclass(TypeclassBase, ObjectDB)):
                       matching Accounts.
 
         """
-        if isinstance(searchdata, basestring):
+        if isinstance(searchdata, str):
             # searchdata is a string; wrap some common self-references
             if searchdata.lower() in ("me", "self",):
                 return [self.account] if quiet else self.account
@@ -536,7 +536,7 @@ class DefaultObject(with_metaclass(TypeclassBase, ObjectDB)):
             logger.log_trace()
 
         if text is not None:
-            if not (isinstance(text, basestring) or isinstance(text, tuple)):
+            if not (isinstance(text, str) or isinstance(text, tuple)):
                 # sanitize text before sending across the wire
                 try:
                     text = to_str(text, force_string=True)

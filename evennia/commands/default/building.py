@@ -1544,7 +1544,7 @@ class CmdSetAttribute(ObjManipCommand):
         def load(caller):
             """Called for the editor to load the buffer"""
             old_value = obj.attributes.get(attr)
-            if old_value is not None and not isinstance(old_value, basestring):
+            if old_value is not None and not isinstance(old_value, str):
                 typ = type(old_value).__name__
                 self.caller.msg("|RWARNING! Saving this buffer will overwrite the "
                                 "current attribute (of type %s) with a string!|n" % typ)
@@ -1957,7 +1957,7 @@ class CmdExamine(ObjManipCommand):
         Formats a single attribute line.
         """
         if crop:
-            if not isinstance(value, basestring):
+            if not isinstance(value, str):
                 value = utils.to_str(value, force_string=True)
             value = utils.crop(value)
             value = utils.to_unicode(value)
@@ -2728,7 +2728,7 @@ class CmdSpawn(COMMAND_DEFAULT_CLASS):
             self.caller.msg(string)
             return
 
-        if isinstance(prototype, basestring):
+        if isinstance(prototype, str):
             # A prototype key
             keystr = prototype
             prototype = prototypes.get(prototype, None)

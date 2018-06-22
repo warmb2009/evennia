@@ -141,7 +141,7 @@ def _to_ansi(obj):
         return ANSIString(to_unicode(obj))
 
 
-_unicode = unicode
+# _unicode = unicode
 _whitespace = '\t\n\x0b\x0c\r '
 
 
@@ -841,17 +841,20 @@ class EvCell(object):
 
     def __repr__(self):
         self.formatted = self._reformat()
-        return unicode(ANSIString("<EvCel %s>" % self.formatted))
+        return str(ANSIString("<EvCel %s>" % self.formatted))
+        # return unicode(ANSIString("<EvCel %s>" % self.formatted))
 
     def __str__(self):
         "returns cell contents on string form"
         self.formatted = self._reformat()
-        return str(unicode(ANSIString("\n").join(self.formatted)))
+        return str(ANSIString("\n").join(self.formatted))
+        # return str(unicode(ANSIString("\n").join(self.formatted)))
 
     def __unicode__(self):
         "returns cell contents"
         self.formatted = self._reformat()
-        return unicode(ANSIString("\n").join(self.formatted))
+        return str(ANSIString("\n").join(self.formatted))
+        # return unicode(ANSIString("\n").join(self.formatted))
 
 
 # EvColumn class

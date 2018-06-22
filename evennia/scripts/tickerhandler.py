@@ -371,8 +371,8 @@ class TickerHandler(object):
         interval = int(interval)
         persistent = bool(persistent)
         packed_obj = pack_dbobj(obj)
-        methodname = callfunc if callfunc and isinstance(callfunc, basestring) else None
-        outpath = path if path and isinstance(path, basestring) else None
+        methodname = callfunc if callfunc and isinstance(callfunc, str) else None
+        outpath = path if path and isinstance(path, str) else None
         return (packed_obj, methodname, outpath, interval, idstring, persistent)
 
     def save(self):
@@ -431,7 +431,7 @@ class TickerHandler(object):
                     if not persistent and not server_reload:
                         # this ticker will not be restarted
                         continue
-                    if isinstance(callfunc, basestring) and not obj:
+                    if isinstance(callfunc, str) and not obj:
                         # methods must have an existing object
                         continue
                     # we must rebuild the store_key here since obj must not be

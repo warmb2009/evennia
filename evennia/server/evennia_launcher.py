@@ -63,7 +63,7 @@ ENFORCED_SETTING = False
 
 # requirements
 PYTHON_MIN = '2.7'
-TWISTED_MIN = '16.0.0'
+TWISTED_MIN = '18.4.0'
 DJANGO_MIN = '1.11'
 DJANGO_REC = '1.11'
 

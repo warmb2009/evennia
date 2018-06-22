@@ -624,7 +624,7 @@ class EvMenu(object):
                 self.caller.msg("|r%s|n" % errmsg)
                 logger.log_trace(errmsg)
                 return
-        if isinstance(ret, basestring):
+        if isinstance(ret, str):
             # only return a value if a string (a goto target), ignore all other returns
             return ret
         return None

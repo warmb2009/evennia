@@ -43,9 +43,9 @@ def dbref(inp, reqhash=True):
             dbref, otherwise `None`.
 
     """
-    if reqhash and not (isinstance(inp, basestring) and inp.startswith("#")):
+    if reqhash and not (isinstance(inp, str) and inp.startswith("#")):
         return None
-    if isinstance(inp, basestring):
+    if isinstance(inp, str):
         inp = inp.lstrip('#')
     try:
         if int(inp) < 0:
@@ -77,7 +77,7 @@ def identify_object(inp):
             return inp, "object"
         elif clsname == "ChannelDB":
             return inp, "channel"
-    if isinstance(inp, basestring):
+    if isinstance(inp, str):
         return inp, "string"
     elif dbref(inp):
         return dbref(inp), "dbref"

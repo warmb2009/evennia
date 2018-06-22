@@ -1226,7 +1226,7 @@ class ContribRPObject(DefaultObject):
             messaging is assumed to be handled by the caller.
 
         """
-        is_string = isinstance(searchdata, basestring)
+        is_string = isinstance(searchdata, str)
 
         if is_string:
             # searchdata is a string; wrap some common self-references

@@ -155,7 +155,7 @@ _ANSI_ESCAPE = re.compile(r"\|\|")
 
 def _to_ansi(obj, regexable=False):
     "convert to ANSIString"
-    if isinstance(obj, basestring):
+    if isinstance(obj, str):
         # since ansi will be parsed twice (here and in the normal ansi send), we have to
         # escape the |-structure twice.
         obj = _ANSI_ESCAPE.sub(r"||||", obj)

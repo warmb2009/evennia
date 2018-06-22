@@ -23,7 +23,7 @@ import time
 from twisted.web import server, resource
 from twisted.internet.task import LoopingCall
 from django.utils.functional import Promise
-from django.utils.encoding import force_unicode
+#from django.utils.encoding import force_unicode
 from django.conf import settings
 from evennia.utils.ansi import parse_ansi
 from evennia.utils import utils

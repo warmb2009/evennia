@@ -198,7 +198,7 @@ def _progressive_cmd_run(cmd, generator, response=None):
     else:
         if isinstance(value, (int, float)):
             utils.delay(value, _progressive_cmd_run, cmd, generator)
-        elif isinstance(value, basestring):
+        elif isinstance(value, str):
             _GET_INPUT(cmd.caller, value, _process_input, cmd=cmd, generator=generator)
         else:
             raise ValueError("unknown type for a yielded value in command: {}".format(type(value)))

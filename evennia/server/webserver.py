@@ -11,8 +11,8 @@ application.
 a great example/aid on how to do this.)
 
 """
-import urlparse
-from urllib import quote as urlquote
+from urllib.parse import urlparse
+from urllib.request import quote as urlquote
 from twisted.web import resource, http, server
 from twisted.internet import reactor
 from twisted.application import internet

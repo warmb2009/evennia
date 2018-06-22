@@ -7,5 +7,5 @@ It is not advisable to change the value set below, as
 there will be a lot of encoding errors that result in
 server crashes.
 """
-import sys
-sys.setdefaultencoding('utf-8')
+# import sys
+# sys.setdefaultencoding('utf-8')

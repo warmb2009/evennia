@@ -510,7 +510,7 @@ class WebSocketProtocol(ProtocolWrapper):
         elif "Sec-WebSocket-Protocol" in self.headers:
             protocols = self.headers["Sec-WebSocket-Protocol"]
 
-        if isinstance(protocols, basestring):
+        if isinstance(protocols, str):
             protocols = [p.strip() for p in protocols.split(',')]
 
             for protocol in protocols:

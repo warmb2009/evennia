@@ -430,7 +430,7 @@ class TypedObject(SharedMemoryModel):
                 typeclass.
 
         """
-        if isinstance(typeclass, basestring):
+        if isinstance(typeclass, str):
             typeclass = [typeclass] + ["%s.%s" % (prefix, typeclass) for prefix in settings.TYPECLASS_PATHS]
         else:
             typeclass = [typeclass.path]
